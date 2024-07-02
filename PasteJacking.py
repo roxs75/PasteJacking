@@ -1,26 +1,30 @@
 from jinja2 import Environment, FileSystemLoader
 from flask import Flask, request, Response
 import colored
-bannar_color =[
-colored.fg("magenta") + colored.attr("bold"), 
-colored.fg("cyan")    + colored.attr("bold"),
-colored.fg("yellow")  + colored.attr("bold"),
-colored.fg("#bc000b") + colored.attr("bold"),
-colored.fg("white")   + colored.attr("bold"),
-colored.fg("#33ff29") + colored.attr("bold"),
-colored.fg("white") + colored.bg("black")+colored.attr("bold"),
-colored.fg("#33ff29") + colored.bg("white")+colored.attr("bold")
+
+# Define banner colors using named colors
+banner_colors = [
+    colored.fg("magenta") + colored.attr("bold"), 
+    colored.fg("cyan") + colored.attr("bold"),
+    colored.fg("yellow") + colored.attr("bold"),
+    colored.fg("red") + colored.attr("bold"),  # Changed from hex to 'red'
+    colored.fg("white") + colored.attr("bold"),
+    colored.fg("green") + colored.attr("bold"),  # Changed from hex to 'green'
+    colored.fg("white") + colored.bg("black") + colored.attr("bold"),
+    colored.fg("green") + colored.bg("white") + colored.attr("bold")  # Changed from hex to 'green'
 ]
 
-magenta = bannar_color[0]
-cyan = bannar_color[1]
-yellow = bannar_color[2]
-red = bannar_color[3]
-white = bannar_color[4]
-green = bannar_color[5]
-bold = bannar_color[6]
-res = colored.style.RESET
-bannar = f'''
+magenta = banner_colors[0]
+cyan = banner_colors[1]
+yellow = banner_colors[2]
+red = banner_colors[3]
+white = banner_colors[4]
+green = banner_colors[5]
+bold = banner_colors[6]
+res = colored.attr('reset')
+
+# Create banner
+banner = f'''
 {cyan}
           |\___/|                      \\
          =) ^Y^ (=   |\_/|              ||    '
@@ -28,24 +32,28 @@ bannar = f'''
            )=*=(    =\T_= /    ~  ~  \//
           /     \     `"`\   ~   / ~  /
           |     |         |~   \ |  ~/
-         /| | | |\         \  ~/- \ ~\
-{res}   
+         /| | | |\         \  ~/- \ ~\\
+{res}
         {green}{bold}╔═╗┌─┐┌─┐┌┬┐┌─┐ ╦┌─┐┌─┐┬┌─┌─┐┬─┐{res}
         {green}{bold}╠═╝├─┤└─┐ │ ├┤  ║├─┤│  ├┴┐├┤ ├┬┘{res}
         {green}{bold}╩  ┴ ┴└─┘ ┴ └─┘╚╝┴ ┴└─┘┴ ┴└─┘┴└─{res}
-                                    {white}[{red}=>{white}] {yellow}Created by{red}:{red}{bold}AbdulRahman Mohammed{res}{white}({cyan}De3vil{white}) {white}[{red}<={white}]{green}
-                                  \___________________________________________________/ 
+                                    {white}[{red}=>{white}] {yellow}Created by{red}:{red}{bold} AbdulRahman Mohammed {res}{white}({cyan}De3vil{white}) {white}[{red}<={white}]
+                                  \___________________________________________________/
 '''
-print(bannar)
+
+print(banner)
+
+# Set payload input
 globalvar = input(f"{red}set payload {white}: ")
 
+# Initialize Flask app
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     global globalvar
-    payload = request.args.get('payload',f"{globalvar}"'\r\n')
-
+    payload = request.args.get('payload', globalvar)
+    
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('index.html')
     rendered_template = template.render(payload=payload)
@@ -53,4 +61,4 @@ def index():
     return Response(rendered_template, content_type='text/html')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=8080)
+    app.run(host="0.0.0.0", port=8080)
