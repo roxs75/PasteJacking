@@ -18,7 +18,7 @@ Pastejacking  is a technique is a method that malicious websites employ to take 
 + **For Linux :**
 ```
 git clone https://github.com/De3vil/PasteJacking.git
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 python PasteJacking.py
 ```
 **For Windows:**
@@ -27,7 +27,7 @@ git clone https://github.com/De3vil/PasteJacking.git
 pip install -r requirements.txt
 python PasteJacking.py
 ```
-## [+] Find Me on :
+## [+] Find Him on :
 <h4> Abdulrahman Mohammed </h4>
   <a href="https://www.linkedin.com/in/de3vil/">
      <img src="https://img.shields.io/badge/De3vil-blue?style=for-the-badge&logo=linkedin&logoColor=00AEFF&l">
@@ -37,7 +37,7 @@ python PasteJacking.py
   </a>
 
 
-If this tool has been useful for you, feel free to thank me by buying me a coffee :)
+If this tool has been useful for you, feel free to thank him by buying him a coffee :)
 [![Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/De3vil)
  [![B De3vil](https://img.shields.io/badge/$-support-ff69b4.svg?style=flat)](https://www.paypal.com/paypalme/De3vil01)
 
